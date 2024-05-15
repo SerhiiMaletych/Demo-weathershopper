@@ -31,6 +31,7 @@ test('Check user can make a full flow', async ({ page }) => {
     const trCount = await countCartElements(page);
     expect(trCount).toBe(2);
 
+
     await page.click(submitButton);
     await  fillFormAndSubmit(page);
     if(await page.isVisible(paymentFailedMessage)){
