@@ -46,12 +46,11 @@ async function getLeastExpensiveProduct(products: any[]) {
 
 async function getProductPrice(productElement: any): Promise<number | null> {
     const buttonText = await productElement.getAttribute('onclick');
-    const matches = buttonText.match(/\d+/g); // Match all numeric values
+    const matches = buttonText.match(/\d+/g);
     if (matches && matches.length > 0) {
-        // Assuming the last numeric value is the price
         const price = parseInt(matches[matches.length - 1]);
         return price;
     } else {
-        return null; // Unable to extract price
+        return null;
     }
 }

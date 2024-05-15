@@ -11,7 +11,7 @@ import {countCartElements} from "../pages/cart-page";
 import {fillFormAndSubmit, submitButton} from "../pages/checkout-page";
 import {paymentFailedMessage, paymentSucceededMessage} from "../pages/confirmation-page";
 
-test('Check user can make a full flow', async ({ page }) => {
+test('Check user can accomplish a full flow', async ({ page }) => {
     await page.goto("/");
     const temperature = await getTemperature(page);
     await checkWeatherAndClick(page, temperature);
