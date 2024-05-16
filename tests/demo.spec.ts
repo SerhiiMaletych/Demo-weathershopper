@@ -4,7 +4,6 @@ import {notEmptyCartButton, addItemsToTheCart, emptyCartButton} from "../pages/s
 import {countCartElements} from "../pages/cart-page";
 import {fillFormAndSubmit, submitButton} from "../pages/checkout-page";
 import {dealWithFailedPayment} from "../pages/confirmation-page";
-import exp from "node:constants";
 
 test('Check user can accomplish a full flow', async ({ page }) => {
     await page.goto("/");
