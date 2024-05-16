@@ -1,14 +1,14 @@
 import {Page} from "playwright";
 
-export const cartButton : string = '//button[@onclick="goToCart()"]';
+export const notEmptyCartButton : string = '//button//span[contains(text(),\'item\')]';
 const aloeMoisturizers : string =
     '//*[contains(translate(text(), \'ABCDEFGHIJKLMNOPQRSTUVWXYZ\', \'abcdefghijklmnopqrstuvwxyz\'), "aloe")]/following-sibling::button';
 const almondMoisturizers : string =
     '//*[contains(translate(text(), \'ABCDEFGHIJKLMNOPQRSTUVWXYZ\', \'abcdefghijklmnopqrstuvwxyz\'), "almond")]/following-sibling::button';
 const SPF50Sunscreen : string =
-    '//*[contains(text(),"SPF-50")]/following-sibling::button'
+    '//*[contains(text(),"SPF-50")]/following-sibling::button';
 const SPF30Sunscreen : string =
-    ('//*[contains(text(),"SPF-30")]/following-sibling::button')
+    '//*[contains(text(),"SPF-30")]/following-sibling::button';
 export const addAloeMoisturizer = async (page: Page) => {
     const leastExpensiveAloeMoisturizer = await getLeastExpensiveProduct( await page.$$(aloeMoisturizers));
     await leastExpensiveAloeMoisturizer?.click();
@@ -52,5 +52,16 @@ async function getProductPrice(productElement: any): Promise<number | null> {
         return price;
     } else {
         return null;
+    }
+}
+export const addItemsToTheCart = async (page : Page)=>{
+    const h2Text = await page.$eval('h2', (element: HTMLElement) => element.textContent);
+    if(h2Text=="Moisturizers"){
+        await addAloeMoisturizer(page);
+        await addAlmondMoisturizer(page);
+    }
+    else if(h2Text=="Sunscreens"){
+        await addSPF50Sunscreen(page);
+        await addSPF30Sunscreen(page);
     }
 }
