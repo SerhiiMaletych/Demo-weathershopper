@@ -1,5 +1,4 @@
 import {Page} from "playwright";
-import {expect} from "@playwright/test";
 
 export const emptyCartButton : string = "//button[@onclick='goToCart()']";
 export const notEmptyCartButton : string = '//button//span[contains(text(),\'item\')]';
@@ -50,8 +49,7 @@ async function getProductPrice(productElement: any): Promise<number | null> {
     const buttonText = await productElement.getAttribute('onclick');
     const matches = buttonText.match(/\d+/g);
     if (matches && matches.length > 0) {
-        const price = parseInt(matches[matches.length - 1]);
-        return price;
+        return parseInt(matches[matches.length - 1]);
     } else {
         return null;
     }
