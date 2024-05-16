@@ -1,5 +1,7 @@
 import {Page} from "playwright";
+import {expect} from "@playwright/test";
 
+export const emptyCartButton : string = "//button[@onclick='goToCart()']";
 export const notEmptyCartButton : string = '//button//span[contains(text(),\'item\')]';
 const aloeMoisturizers : string =
     '//*[contains(translate(text(), \'ABCDEFGHIJKLMNOPQRSTUVWXYZ\', \'abcdefghijklmnopqrstuvwxyz\'), "aloe")]/following-sibling::button';
