@@ -12,7 +12,7 @@ test('Check user can accomplish a full flow', async ({ page }) => {
     await checkWeatherAndClick(page, temperature);
 
     await expect(page.locator(emptyCartButton)).toBeVisible();
-    
+
     await page.waitForTimeout(500)
     await addItemsToTheCart(page);
     await page.click(notEmptyCartButton);
